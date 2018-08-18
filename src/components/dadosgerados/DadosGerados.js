@@ -3,13 +3,12 @@ import {PageHeader, Row, Carousel, Grid, Col} from 'react-bootstrap';
 import politicosgologo from '../../assets/politicosgologo.png';
 import {Link} from 'react-router-dom';
 import './dadosGerados.css'
-
+import Dados from  './Dados';
 
 class DadosGerados extends React.Component {
 
   handleClick = (e) => {
-    alert("Lllll");
-    this.refs.hello.scrollIntoView();
+    this.refs.dados.scrollIntoView();
   }
 
   render() {
@@ -30,16 +29,8 @@ class DadosGerados extends React.Component {
               <Row className="animated infinite rubberBand">
               <i class="fas fa-arrow-down setinha" onClick={this.handleClick}></i>
               </Row>
-              <div ref="hello">
-                <p/>
-                <p/>
-                <p/>
-                <p/>
-                <p/>
-                <p/>
-                <p/>
-                <p/>
-                oifjdsaioghruaioghrwaio
+              <div ref="dados">
+                <Dados/>
               </div>
             </PageHeader>
         </Row>
