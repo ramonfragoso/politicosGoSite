@@ -1,0 +1,128 @@
+@import url('https://fontlibrary.org/face/8bit-wonder');
+@import url('https://fonts.googleapis.com/css?family=Space+Mono');
+
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.grid {
+  margin: 0 auto;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+    transform: scale(1.1);
+}
+
+.hvr-float {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-float:hover, .hvr-float:focus, .hvr-float:active {
+  -webkit-transform: translateY(-8px);
+  transform: translateY(-8px);
+}
+
+.header {
+  box-sizing:border-box;
+  border-color: transparent;
+  text-align: center;
+  margin-top: 50px;
+  font-family: '8BITWONDERNominal';
+}
+
+.logo {
+  width: 100%;
+  height: auto;
+  box-sizing:border-box;
+  margin-bottom: 30px;
+}
+
+.go {
+  height: 110px;
+}
+
+.subtitle {
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  box-sizing:border-box;
+}
+
+.subtitleText {
+  color: blue;
+  text-shadow: 0px 0px 0.5px black;
+  font-size: 0.5em;
+}
+
+.printDescription {
+  margin-top: 15px;
+  color: black;
+  text-align: center;
+  font-size: 1.8em;
+  font-family: 'Space Mono', monospace;
+}
+
+.carousel-inner > .item > img {
+    margin: 0 auto;
+    border-radius: 20px;
+}
+
+.carousel-control.left {
+  background: transparent;
+  color: #1094e7;
+}
+
+.carousel-control.right {
+  background: transparent;
+  color: #1094e7;
+}
+
+.carousel-indicators li {
+  visibility: hidden;
+}
+
+.baixar {
+  font-size: 5em;
+  margin-top: 50px;
+  color: blue;
+  text-shadow: 0px 0px 11px black;
+}
+
+.downloadRow {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-family: '8BITWONDERNominal';
+  text-align: center;
+  color: blue;
+}
+
+.downloadtext {
+  margin-top: 10px;
+  text-shadow: 0px 0px 1px black;
+  font-size: 1em;
+  text-decoration: underline;
+}
+
+.dadosText {
+  margin-top: 10px;
+  text-shadow: 0px 0px 1px black;
+  font-size: 1em;
+}
