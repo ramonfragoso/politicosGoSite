@@ -8,7 +8,7 @@ import Dados from  './Dados';
 class DadosGerados extends React.Component {
 
   handleClick = (e) => {
-    this.refs.dados.scrollIntoView();
+    this.refs.dados.scrollIntoView({behavior:"smooth"});
   }
 
   render() {

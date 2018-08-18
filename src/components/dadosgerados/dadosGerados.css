@@ -5,18 +5,32 @@
   margin-bottom: 50px;
 }
 
+.tudo {
+  width: 100%;
+  height: auto;
+}
+
 .title {
   box-sizing:border-box;
-  color: blue;
+  color: #1094e7;
   margin: 0 auto;
   font-size: 10vw;
-  text-shadow: 0px 0px 10px black;
+  text-shadow: 0px 0px 12px black;
   width: 100%;
   height: auto;
 }
 
 .setinha {
   margin-top: 50px;
-  color: blue;
+  color: #1094e7;
   text-shadow: 0px 0px 10px black;
+  margin-bottom: 50px;
+}
+
+.cidade {
+  font-size: 2.5vw;
+}
+
+.opcao {
+  font-size: 2vw;
 }

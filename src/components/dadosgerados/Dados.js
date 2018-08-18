@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-
-
+import Select from 'react-select';
+import {PanelGroup, Panel, Grid, Button, DropdownButton, MenuItem} from 'react-bootstrap';
+import './dadosGerados.css';
 
 export default class Dados extends React.Component {
 
@@ -12,12 +12,18 @@ export default class Dados extends React.Component {
     this.state = {
       nomePrefeitos: [],
       cidades: [],
-      obrasPorCidade: {}
+      obrasPorCidade: {},
+      activeKey: '0'
     }
+
+    this.handleSelect = this.handleSelect.bind(this);
+  }
+
+  handleSelect(activeKey) {
+    this.setState({ activeKey });
   }
 
   componentDidMount = () => {
-
     //armazena todos os prefeitos
     fetch("https://politicosgo.herokuapp.com/prefeitos")
     .then(r => r.json())
@@ -30,17 +36,29 @@ export default class Dados extends React.Component {
     })
 
     //armazena todas as cidades
-    fetch("https://intense-eyrie-47894.herokuapp.com/obra")
+    fetch("https://politicosgo.herokuapp.com/obras")
     .then(r => r.json())
     .then(js => {
       js.map(x => {
-        this.state.obrasPorCidade[x.municipio] = []
-        console.log(this.state.obrasPorCidade)
+        this.state.obrasPorCidade[x.municipio] = [];
+      })
+    })
+    .then(res => {
+      for(var i in this.state.obrasPorCidade) {
+        this.setState(prevState => ({
+          cidades: [...prevState.cidades, i]
+        }))
+      }
+    }).then(resp => {
+      this.state.cidades.sort(function(a, b){
+          if(a < b) return -1;
+          if(a > b) return 1;
+          return 0;
       })
     })
 
     // mapeia obras para cidade
-    fetch("https://intense-eyrie-47894.herokuapp.com/obra")
+    fetch("https://politicosgo.herokuapp.com/obras")
     .then(r => r.json())
     .then(js => {
       js.map(x => {
@@ -50,23 +68,58 @@ export default class Dados extends React.Component {
 
   }
 
-  mostraPrefeitos = (e) => {
-    console.log("nobho")
-
-    console.log(this.state.obrasPorCidade["Cajazeiras"])
-    // ReactDOM.render(this.state.nomePrefeitos.map(x => <div>{x}</div>), document.getElementById('prefeitos'))
+  handleSelect(activeKey) {
+    this.setState({ activeKey });
   }
 
   render() {
     return (
-      <div>
-        <div>Veja todas as obras de cidades:</div>
-        <div>Top 10 de cidades que mais concluem obras:</div>
-        <div>Top 10 de cidades que menos concluem obras:</div>
-        <div>Obras atrasadas de acordo com a cidades:</div>
+      <Grid className="tudo">
+        <PanelGroup
+          accordion
+          id="accordion-controlled-example"
+          activeKey={this.state.activeKey}
+          onSelect={this.handleSelect}>
+            <Panel eventKey="1" className="panel">
+                <Panel.Heading>
+                  <Panel.Title toggle className="opcao">veja todas as obras de sua cidade:</Panel.Title>
+                </Panel.Heading>
+                <Panel.Body collapsible>
+                <div>
+                  {this.state.cidades.map(x => <div className="cidade"><a>{x}</a></div>)}
+                </div>
+                </Panel.Body>
+            </Panel>
+
+            <Panel eventKey="2">
+                <Panel.Heading>
+                  <Panel.Title toggle className="opcao">Top 1o de cidades que mais concluem obras:</Panel.Title>
+                </Panel.Heading>
+                <Panel.Body collapsible>Panel content 1</Panel.Body>
+            </Panel>
+
+            <Panel eventKey="3">
+                <Panel.Heading>
+                  <Panel.Title toggle className="opcao">Top 1o de cidades que menos concluem obras:</Panel.Title>
+                </Panel.Heading>
+                <Panel.Body collapsible>Panel content 1</Panel.Body>
+            </Panel>
+
+            <Panel eventKey="4">
+                <Panel.Heading>
+                  <Panel.Title toggle className="opcao">Obras atrasadas ( por cidade ):</Panel.Title>
+                </Panel.Heading>
+                <Panel.Body collapsible>
+                <div>
+                  {Object.keys(this.state.cidades).map(x => <div className="cidade"><a>{x}</a></div>)}
+                </div>
+                </Panel.Body>
+            </Panel>
+
+        </PanelGroup>
 
 
-      </div >
+      </Grid>
     )
   }
 }

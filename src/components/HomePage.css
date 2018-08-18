@@ -67,8 +67,8 @@
 }
 
 .subtitleText {
-  color: blue;
-  text-shadow: 0px 0px 0.5px black;
+  color: #1094e7;
+  text-shadow: 0px 0px 3px black;
   font-size: 0.5em;
 }
 
@@ -78,6 +78,8 @@
   text-align: center;
   font-size: 1.8em;
   font-family: 'Space Mono', monospace;
+  color: yellow;
+  text-shadow: 0px 0px 11px black;
 }
 
 .carousel-inner > .item > img {
@@ -102,7 +104,7 @@
 .baixar {
   font-size: 5em;
   margin-top: 50px;
-  color: blue;
+  color: #1094e7;
   text-shadow: 0px 0px 11px black;
 }
 
@@ -111,7 +113,7 @@
   margin-bottom: 50px;
   font-family: '8BITWONDERNominal';
   text-align: center;
-  color: blue;
+  color: #1094e7;
 }
 
 .downloadtext {
