@@ -67,8 +67,8 @@
 }
 
 .subtitleText {
-  color: #1094e7;
-  text-shadow: 0px 0px 3px black;
+  color: #0fd1e7;
+  text-shadow: 0px 0px 5px black;
   font-size: 0.5em;
 }
 
@@ -89,12 +89,12 @@
 
 .carousel-control.left {
   background: transparent;
-  color: #1094e7;
+  color: #0fd1e7;
 }
 
 .carousel-control.right {
   background: transparent;
-  color: #1094e7;
+  color: #0fd1e7;
 }
 
 .carousel-indicators li {
@@ -104,7 +104,7 @@
 .baixar {
   font-size: 5em;
   margin-top: 50px;
-  color: #1094e7;
+  color: #0fd1e7;
   text-shadow: 0px 0px 11px black;
 }
 
@@ -113,7 +113,7 @@
   margin-bottom: 50px;
   font-family: '8BITWONDERNominal';
   text-align: center;
-  color: #1094e7;
+  color: #0fd1e7;
 }
 
 .downloadtext {

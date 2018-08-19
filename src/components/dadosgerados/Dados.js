@@ -1,9 +1,9 @@
 import React from 'react';
-import {PanelGroup, Panel, Col, Grid} from 'react-bootstrap';
+import {PanelGroup, Panel, Alert, Grid} from 'react-bootstrap';
 import './dadosGerados.css';
 import BarChart from "react-svg-bar-chart"
 import LoadingScreen from 'react-loading-screen';
-
+import ModalCidade from './ModalCidade';
 export default class Dados extends React.Component {
 
 
@@ -71,7 +71,7 @@ export default class Dados extends React.Component {
       let cidades = Object.keys(this.state.obrasPorCidade)
       let qtd = []
       for(var i in cidades) {
-        qtd.push([cidades[i], this.state.obrasPorCidade[cidades[i]].length])
+        qtd.push([cidades[i] + " ", this.state.obrasPorCidade[cidades[i]].length])
       }
       qtd.sort(function(a, b) {
           return b[1]-a[1];
@@ -79,7 +79,7 @@ export default class Dados extends React.Component {
       this.setState({
         ranking: qtd
       });
-      console.log(this.state.ranking[0])
+      console.log(this.state.ranking.length)
     })
     .then(response => {
       this.setState({loading: false})
@@ -117,7 +117,7 @@ export default class Dados extends React.Component {
                 </Panel.Heading>
                 <Panel.Body collapsible>
                 <div>
-                  {this.state.cidades.map(x => <div className="cidade"><a>{x}</a></div>)}
+                  {this.state.cidades.map(x => <ModalCidade name={x}/>)}
                 </div>
                 </Panel.Body>
             </Panel>
@@ -127,16 +127,16 @@ export default class Dados extends React.Component {
                   <Panel.Title toggle className="opcao">Top 1o cidades com mais obras:</Panel.Title>
                 </Panel.Heading>
                 <Panel.Body collapsible>
-                    <div className="cidadeRanking">1 - {this.state.ranking[0]}</div>
-                    <div className="cidadeRanking">2 - {this.state.ranking[1]}</div>
-                    <div className="cidadeRanking">3 - {this.state.ranking[2]}</div>
-                    <div className="cidadeRanking">4 - {this.state.ranking[3]}</div>
-                    <div className="cidadeRanking">5 - {this.state.ranking[4]}</div>
-                    <div className="cidadeRanking">6 - {this.state.ranking[5]}</div>
-                    <div className="cidadeRanking">7 - {this.state.ranking[6]}</div>
-                    <div className="cidadeRanking">8 - {this.state.ranking[7]}</div>
-                    <div className="cidadeRanking">9 - {this.state.ranking[8]}</div>
-                    <div className="cidadeRanking">10 - {this.state.ranking[9]}</div>
+                    <Alert className="cidadeRanking">1 - {this.state.ranking[0]}</Alert>
+                    <Alert className="cidadeRanking">2 - {this.state.ranking[1]}</Alert>
+                    <Alert className="cidadeRanking">3 - {this.state.ranking[2]}</Alert>
+                    <Alert className="cidadeRanking">4 - {this.state.ranking[3]}</Alert>
+                    <Alert className="cidadeRanking">5 - {this.state.ranking[4]}</Alert>
+                    <Alert className="cidadeRanking">6 - {this.state.ranking[5]}</Alert>
+                    <Alert className="cidadeRanking">7 - {this.state.ranking[6]}</Alert>
+                    <Alert className="cidadeRanking">8 - {this.state.ranking[7]}</Alert>
+                    <Alert className="cidadeRanking">9 - {this.state.ranking[8]}</Alert>
+                    <Alert className="cidadeRanking">10 - {this.state.ranking[9]}</Alert>
                 </Panel.Body>
             </Panel>
 
@@ -145,17 +145,16 @@ export default class Dados extends React.Component {
                   <Panel.Title toggle className="opcao">Top 1o cidades com menos obras:</Panel.Title>
                 </Panel.Heading>
                 <Panel.Body collapsible>
-                </Panel.Body>
-            </Panel>
-
-            <Panel eventKey="4">
-                <Panel.Heading>
-                  <Panel.Title toggle className="opcao">Obras atrasadas ( por cidade ):</Panel.Title>
-                </Panel.Heading>
-                <Panel.Body collapsible>
-                <div>
-                  {this.state.cidades.map(x => <div className="cidade"><a>{x}</a></div>)}
-                </div>
+                    <Alert className="cidadeRanking">1 - {this.state.ranking[this.state.ranking.length-1]}</Alert>
+                    <Alert className="cidadeRanking">2 - {this.state.ranking[this.state.ranking.length-2]}</Alert>
+                    <Alert className="cidadeRanking">3 - {this.state.ranking[this.state.ranking.length-3]}</Alert>
+                    <Alert className="cidadeRanking">4 - {this.state.ranking[this.state.ranking.length-4]}</Alert>
+                    <Alert className="cidadeRanking">5 - {this.state.ranking[this.state.ranking.length-5]}</Alert>
+                    <Alert className="cidadeRanking">6 - {this.state.ranking[this.state.ranking.length-6]}</Alert>
+                    <Alert className="cidadeRanking">7 - {this.state.ranking[this.state.ranking.length-7]}</Alert>
+                    <Alert className="cidadeRanking">8 - {this.state.ranking[this.state.ranking.length-8]}</Alert>
+                    <Alert className="cidadeRanking">9 - {this.state.ranking[this.state.ranking.length-9]}</Alert>
+                    <Alert className="cidadeRanking">10 - {this.state.ranking[this.state.ranking.length-10]}</Alert>
                 </Panel.Body>
             </Panel>
           </PanelGroup>

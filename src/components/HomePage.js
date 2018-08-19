@@ -1,9 +1,9 @@
 import React from 'react';
 import {PageHeader, Row, Carousel, Grid, Col} from 'react-bootstrap';
 import politicosgologo from '../assets/politicosgologo.png';
-import print1 from '../assets/screenshots/print1.jpeg';
-import print2 from '../assets/screenshots/print2.jpeg';
-import print3 from '../assets/screenshots/print3.jpeg';
+import print1 from '../assets/screenshots/print1.png';
+import print2 from '../assets/screenshots/print2.png';
+import print3 from '../assets/screenshots/print3.png';
 import './HomePage.css';
 import {Link} from 'react-router-dom';
 
@@ -25,19 +25,19 @@ class HomePage extends React.Component {
         <Row>
         <Carousel className="carousel">
             <Carousel.Item>
-                <img width={200} height={200} alt="900x500" src={print1} onClick={this.handleFirst}/>
+                <img width={300} height={300} alt="900x500" src={print1} onClick={this.handleFirst}/>
                 <div className="printDescription">
                     VÁ À LOCAIS DE OBRAS DO GOVERNO E DESBRAVE SUA CIDADE.
                 </div>
             </Carousel.Item>
             <Carousel.Item>
-                <img width={200} height={200} alt="900x500" src={print2} />
+                <img width={300} height={300} alt="900x500" src={print2} />
                 <div className="printDescription">
                 SAIBA QUAIS OS POLÍTICOS RESPONSÁVEIS PELAS OBRAS E OS CAPTURE.
                 </div>
             </Carousel.Item>
             <Carousel.Item>
-                <img width={200} height={200} alt="900x500" src={print3} />
+                <img width={300} height={300} alt="900x500" src={print3} />
                 <div className="printDescription">AVALIE AS OBRAS DESCOBERTAS E CONTRIBUA COM A SOCIEDADE DE FORMA PARTICIPATIVA.</div>
             </Carousel.Item>
         </Carousel>
