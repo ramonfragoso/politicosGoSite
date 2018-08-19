@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageHeader, Row, Carousel, Grid, Col} from 'react-bootstrap';
+import {PageHeader, Row, Grid} from 'react-bootstrap';
 import politicosgologo from '../../assets/politicosgologo.png';
 import {Link} from 'react-router-dom';
 import './dadosGerados.css'
@@ -27,7 +27,7 @@ class DadosGerados extends React.Component {
               </small>
               </Row>
               <Row className="animated infinite rubberBand">
-              <i class="fas fa-arrow-down setinha" onClick={this.handleClick}></i>
+              <i className="fas fa-arrow-down setinha" onClick={this.handleClick}></i>
               </Row>
               <div ref="dados">
                 <Dados/>

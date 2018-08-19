@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik+Mono+One');
+
 .logo {
   width: 100%;
   height: auto;
@@ -28,9 +30,21 @@
 }
 
 .cidade {
+  font-family: 'Rubik Mono One', sans-serif;
   font-size: 2.5vw;
+}
+
+.cidadeRanking {
+  font-family: 'Rubik Mono One', sans-serif;
+  font-size: 2.5vw;
+  background-color: yellow;
 }
 
 .opcao {
   font-size: 2vw;
+}
+
+.grafico {
+  font-family: "Arial";
+  color: blue;
 }
