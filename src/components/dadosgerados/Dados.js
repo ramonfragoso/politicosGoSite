@@ -63,9 +63,10 @@ export default class Dados extends React.Component {
     fetch("https://politicosgo.herokuapp.com/obras")
     .then(r => r.json())
     .then(js => {
-      js.map(x => {
-        this.state.obrasPorCidade[x.municipio].push(x.name)
-      })
+      setTimeout(js.map(x => {
+              this.state.obrasPorCidade[x.municipio].push(x.name)
+            }), 1000)
+
     })
     .then(res => {
       let cidades = Object.keys(this.state.obrasPorCidade)
