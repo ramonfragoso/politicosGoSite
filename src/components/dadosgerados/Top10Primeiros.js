@@ -1,8 +1,8 @@
 import React from 'react';
-import {Modal, Button, OverlayTrigger} from 'react-bootstrap';
+import {Grid, PageHeader, Row} from 'react-bootstrap';
 import './dadosGerados.css';
 
-export default class ModalCidade extends React.Component {
+export default class Top10Primeiros extends React.Component {
 
     // "name": "Quadra da Escola Cec�lia E. Meireles",
     // "situacao": "Conclu�da",
@@ -55,21 +55,15 @@ export default class ModalCidade extends React.Component {
 
   render() {
     return(
-      <div>
-          <div onClick={this.handleClick} className="cidade">
-              {this.props.name}
-          </div>
-          <Modal show={this.state.show} onHide={this.handleClose}>
-                    <Modal.Header closeButton>
-                      <Modal.Title>{this.props.name}</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                    </Modal.Body>
-                    <Modal.Footer>
-                      <Button onClick={this.handleClose}>Voltar</Button>
-                    </Modal.Footer>
-                  </Modal>
-      </div>
+      <Grid className="obrasCidades">
+        <Row>
+            <PageHeader className="header">
+              <div ref="dados">
+                TOP 10 CIDADES COM MAIS OBRAS NA PARAIBA
+              </div>
+            </PageHeader>
+        </Row>
+      </Grid>
     )
   }
 }

@@ -1,6 +1,10 @@
 @import url('https://fontlibrary.org/face/8bit-wonder');
 @import url('https://fonts.googleapis.com/css?family=Space+Mono');
 
+.mainView {
+  background: linear-gradient(to bottom right,#6e3f91, #c67aff);
+}
+
 .hvr-grow {
     display: inline-block;
     vertical-align: middle;
@@ -12,8 +16,41 @@
     transition-property: transform;
 }
 
+.title {
+  box-sizing:border-box;
+  color: #1094e7;
+  margin: 0 auto;
+  font-size: 10vw;
+  text-shadow: 0px 0px 12px black;
+  width: 100%;
+  height: auto;
+  font-family: '8BITWONDERNominal';
+}
+
+.setinha {
+  margin-top: 50px;
+  color: #1094e7;
+  text-shadow: 0px 0px 10px black;
+  margin-bottom: 50px;
+  font-size: 4vw;
+}
+
+
+.viewObras {
+  background: linear-gradient(to top right, #fbff21 , #c67aff);
+}
+
+.viewPrimeiros {
+  background: linear-gradient(to top right, #fbff21 , #20fff3);
+}
+
+.viewUltimos{
+  background: linear-gradient(to top right, #ff2020 , #20fff3);
+}
+
 .grid {
   margin: 0 auto;
+  text-align: center;
 }
 
 .hvr-grow:hover,

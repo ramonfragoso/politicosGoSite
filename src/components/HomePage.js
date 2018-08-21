@@ -1,5 +1,9 @@
 import React from 'react';
 import {PageHeader, Row, Carousel, Grid, Col} from 'react-bootstrap';
+import ObrasCidades from './dadosgerados/ObrasCidades';
+import DadosGerados from './dadosgerados/DadosGerados';
+import Top10Primeiros from './dadosgerados/Top10Primeiros';
+import Top10Ultimos from './dadosgerados/Top10Ultimos';
 import politicosgologo from '../assets/politicosgologo.png';
 import print1 from '../assets/screenshots/print1.png';
 import print2 from '../assets/screenshots/print2.png';
@@ -17,8 +21,18 @@ import {Link} from 'react-router-dom';
 
 class HomePage extends React.Component {
 
+  constructor(props) {
+    super(props);
+  }
+
+  setaClick = (e) => {
+      this.refs.obras.scrollIntoView({behavior:"smooth"});
+  }
+
+
   render() {
     return (
+      <div className="mainView">
       <Grid className="grid">
         <Row>
             <PageHeader className="header">
@@ -70,24 +84,31 @@ class HomePage extends React.Component {
             </Carousel.Item>
         </Carousel>
         </Row>
-            <Row className="downloadRow">
-              <Grid>
-                  <Col md={6}>
-                    <a href={politicosgologo} download>
-                      <i class="fas fa-download baixar animated infinite wobble delay-2s"></i>
-                      <div className="downloadtext">Download .apk</div>
-                    </a>
-                  </Col>
-                  <Col md={6} className="hvr-float">
-                    <Link to="/dados">
-                      <i class="fas fa-map-marked-alt baixar"></i>
-                      <div className="dadosText">Dados gerados</div>
-                    </Link>
-                  </Col>
-              </Grid>
-            </Row>
-
+        <Row className="downloadRow">
+            <a href={politicosgologo} download>
+              <i class="fas fa-download baixar"></i>
+              <div className="downloadtext">Download .apk</div>
+            </a>
+        </Row>
+        <Row>
+        <small className="title">
+        DADOS
+        </small>
+        <Row>
+        </Row>
+        <i className="fas fa-arrow-down setinha animated infinite rubberBand" onClick={this.setaClick}></i>
+        </Row>
       </Grid>
+          <div className="viewObras" ref="obras">
+            <DadosGerados/>
+          </div>
+          <div className="viewPrimeiros">
+            <Top10Primeiros/>
+          </div>
+          <div className="viewUltimos">
+            <Top10Ultimos/>
+          </div>
+      </div>
 
     );
   }
