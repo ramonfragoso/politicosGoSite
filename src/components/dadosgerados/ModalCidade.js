@@ -25,23 +25,13 @@ export default class ModalCidade extends React.Component {
   render() {
     return (
       <div className="municipioListar">
-      <h1 onClick={this.handleShow}>{this.props.cidade}</h1>
+      <a onClick={this.handleShow}>{this.props.cidade}</a>
       <Modal show={this.state.show} onHide={this.handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>{this.props.cidade}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Text in a modal</h4>
-          <p>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </p>
-          <hr />
-          <h4>Overflowing text to show scroll behavior</h4>
-          <p>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-            ac consectetur ac, vestibulum at eros.
-          </p>
+          <div>{this.props.cidades}</div>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={this.handleClose}>Close</Button>

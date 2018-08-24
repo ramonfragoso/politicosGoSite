@@ -39,8 +39,28 @@ export default class ObrasCidades extends React.Component {
       terminou: false,
 
     }
+    this.removeDuplicados = this.removeDuplicados.bind(this);
+  }
 
-    this.handleClick = this.handleClick.bind(this);
+  removeDuplicados = (array) => {
+      let actual = 0;
+      let retorno = [];
+      let duplicate = false;
+
+      for(let i = 0; i < array.length; i++) {
+        actual = array[i];
+        for(let j = i+1; j < array.length; j++) {
+          if(array[j] == actual) {
+            duplicate = true
+          }
+        }
+        if(duplicate) {
+          duplicate = false;
+        } else {
+          retorno.push(array[i])
+        }
+      }
+      return retorno;
   }
 
   componentDidMount = () => {
@@ -48,6 +68,7 @@ export default class ObrasCidades extends React.Component {
     fetch('https://politicosgo.herokuapp.com/obras')
     .then(res => res.json())
     .then(r => {
+          let cidadesNome = []
           r.map(resp => {
                   this.setState(prevState => ({
                     infoObras: [...prevState.infoObras, {
@@ -61,29 +82,25 @@ export default class ObrasCidades extends React.Component {
                       empresaContratada: resp.empresaContratada,
                       valorContrato: resp.valorContrato
                     }]
-                  }))
+                  }));
                   this.setState(prevState => ({
                     cidades: [...prevState.cidades, resp.municipio]
-                  }))
-          })
+                  }));
+          });
     })
     .then(js => {
-      this.setState({terminou: true})
+      this.setState({cidades: this.removeDuplicados(this.state.cidades).sort()});
     })
-  }
-
-
-
-
-  handleClick() {
-    console.log(this.state.infoObras[0].municipio)
+    .then(fim => {
+      this.setState({terminou: true});
+    })
   }
 
   render() {
     return (
-      <Grid className="tudo" onClick={this.handleClick}>
+      <Grid className="tudo">
           <div>{this.state.terminou == true ?
-            this.state.infoObras.map(x => <ModalCidade cidade={x.municipio}></ModalCidade>): "loading..."}</div>
+            this.state.cidades.map(x => <ModalCidade infos={this.state.infoObras} cidades={this.state.cidades} cidade={x}></ModalCidade>): "loading..."}</div>
       </Grid>
     )
   }
