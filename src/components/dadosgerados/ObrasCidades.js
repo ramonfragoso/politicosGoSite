@@ -3,105 +3,87 @@ import {PanelGroup, Panel, Alert, Grid} from 'react-bootstrap';
 import './dadosGerados.css';
 import BarChart from "react-svg-bar-chart"
 import LoadingScreen from 'react-loading-screen';
+import ModalCidade from './ModalCidade';
 
 export default class ObrasCidades extends React.Component {
 
 
+  // coisas a serem mostradas por obras:
+  // "name": "Quadra da Escola Cec�lia E. Meireles",
+  // "situacao": "Conclu�da",
+  // "municipio": "Cajazeiras",
+  // "uf": "PB",
+  // "logradouro": "Rua Raimundo Leite Rolim",
+  // "bairro": "Casas Populares",
+  // "previsaoConcolusao": "31/12/2014",
+  // "empresaContratada": "(14958510000180) TEC NOVA - CONSTRUCAO CIVIL LTDA - ME",
+  // "valorContrato": 498851.77,
+
+  // [{
+      // "municipio": "Cajazeiras",
+      // "name": "Quadra da Escola Cec�lia E. Meireles",
+      // "situacao": "Conclu�da",
+      // "uf": "PB",
+      // "logradouro": "Rua Raimundo Leite Rolim",
+      // "bairro": "Casas Populares",
+      // "previsaoConcolusao": "31/12/2014",
+      // "empresaContratada": "(14958510000180) TEC NOVA - CONSTRUCAO CIVIL LTDA - ME",
+      // "valorContrato": 498851.77,
+  //}]
+
   constructor(props) {
     super(props);
     this.state = {
-      nomePrefeitos: [],
+      infoObras: [],
       cidades: [],
-      ranking: [],
-      obrasPorCidade: {},
-      activeKey: '0',
-      loading: true
+      terminou: false,
+
     }
 
-    this.handleSelect = this.handleSelect.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount = () => {
 
-    window.scrollTo(0, 0)
-    // //armazena todos os prefeitos
-    // fetch("https://politicosgo.herokuapp.com/prefeitos")
-    // .then(r => r.json())
-    // .then(js => {
-    //   js.map(x => {
-    //     this.setState(prevState => ({
-    //       nomePrefeitos: [...prevState.nomePrefeitos, x["nome"]]
-    //     }))
-    //   })
-    // })
-
-    //armazena todas as cidades
-    fetch("https://politicosgo.herokuapp.com/obras")
-    .then(r => r.json())
+    fetch('https://politicosgo.herokuapp.com/obras')
+    .then(res => res.json())
+    .then(r => {
+          r.map(resp => {
+                  this.setState(prevState => ({
+                    infoObras: [...prevState.infoObras, {
+                      municipio: resp.municipio,
+                      nome: resp.name,
+                      valorFNDE: resp.valorFNDE,
+                      situacao: resp.situacao,
+                      logradouro: resp.logradouro,
+                      bairro: resp.bairro,
+                      previsaoConcolusao: resp.previsaoConcolusao,
+                      empresaContratada: resp.empresaContratada,
+                      valorContrato: resp.valorContrato
+                    }]
+                  }))
+                  this.setState(prevState => ({
+                    cidades: [...prevState.cidades, resp.municipio]
+                  }))
+          })
+    })
     .then(js => {
-      js.map(x => {
-        this.state.obrasPorCidade[x.municipio] = [];
-      })
+      this.setState({terminou: true})
     })
-    .then(res => {
-      for(var i in this.state.obrasPorCidade) {
-        this.setState(prevState => ({
-          cidades: [...prevState.cidades, i]
-        }))
-      }
-    })
-    .then(resp => {
-      this.state.cidades.sort(function(a, b){
-          if(a < b) return -1;
-          if(a > b) return 1;
-          return 0;
-      })
-    })
-
-// [[cajazeira, 4], [soledade, 10], [campena, ]]
-    // mapeia obras para cidade
-    fetch("https://politicosgo.herokuapp.com/obras")
-    .then(r => r.json())
-    .then(js => {
-      setTimeout(js.map(x => {
-              this.state.obrasPorCidade[x.municipio].push(x.name)
-            }), 1000)
-
-    })
-    .then(res => {
-      let cidades = Object.keys(this.state.obrasPorCidade)
-      let qtd = []
-      for(var i in cidades) {
-        qtd.push([cidades[i] + " ", this.state.obrasPorCidade[cidades[i]].length])
-      }
-      qtd.sort(function(a, b) {
-          return b[1]-a[1];
-      });
-      this.setState({
-        ranking: qtd
-      });
-      console.log(this.state.ranking.length)
-    })
-    .then(response => {
-      this.setState({loading: true})
-    })
-
-
   }
 
-  handleSelect(activeKey) {
-    this.setState({ activeKey });
+
+
+
+  handleClick() {
+    console.log(this.state.infoObras[0].municipio)
   }
 
   render() {
-
-
     return (
-
-
-      <Grid className="tudo">
-
-        Todas as Obras de cada cidade
+      <Grid className="tudo" onClick={this.handleClick}>
+          <div>{this.state.terminou == true ?
+            this.state.infoObras.map(x => <ModalCidade cidade={x.municipio}></ModalCidade>): "loading..."}</div>
       </Grid>
     )
   }

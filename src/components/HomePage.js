@@ -29,16 +29,20 @@ class HomePage extends React.Component {
       this.refs.obras.scrollIntoView({behavior:"smooth"});
   }
 
+  logoClick = () => {
+    document.location.reload(true)
+  }
+
 
   render() {
     return (
-      <div className="mainView">
+      <div className="mainView" >
       <Grid className="grid">
         <Row>
-            <PageHeader className="header">
+            <PageHeader  className="header">
               <Row className="hvr-grow">
                 <Link to="/">
-                <img className="logo animated fadeInDown" src={politicosgologo} alt='Politicos'/>
+                <img className="logo animated fadeInDown" src={politicosgologo} onClick={this.logoClick} alt='Politicos'/>
                 </Link>
               </Row>
               <Row className="subtitle"><small className="subtitleText animated fadeIn">Saiba qual o estado das obras publicas de sua cidade. Conheca os principais responsaveis e avalie-os de forma divertida.</small></Row>
@@ -86,7 +90,7 @@ class HomePage extends React.Component {
         </Row>
         <Row className="downloadRow">
             <a href={politicosgologo} download>
-              <i class="fas fa-download baixar"></i>
+              <i class="fas fa-download baixar animated infinite wobble"></i>
               <div className="downloadtext">Download .apk</div>
             </a>
         </Row>
