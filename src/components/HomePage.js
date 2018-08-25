@@ -109,9 +109,6 @@ class HomePage extends React.Component {
           <div className="viewPrimeiros">
             <Top10Primeiros/>
           </div>
-          <div className="viewUltimos">
-            <Top10Ultimos/>
-          </div>
       </div>
 
     );

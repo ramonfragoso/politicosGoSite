@@ -1,5 +1,5 @@
 import React from 'react';
-import {PanelGroup, Panel, Alert, Grid} from 'react-bootstrap';
+import {PanelGroup, Panel, Grid, Col, Footer} from 'react-bootstrap';
 import './dadosGerados.css';
 import BarChart from "react-svg-bar-chart"
 import LoadingScreen from 'react-loading-screen';
@@ -19,6 +19,7 @@ export default class ObrasCidades extends React.Component {
   // "empresaContratada": "(14958510000180) TEC NOVA - CONSTRUCAO CIVIL LTDA - ME",
   // "valorContrato": 498851.77,
 
+  // FORMATO DO OBJECTO
   // [{
       // "municipio": "Cajazeiras",
       // "name": "Quadra da Escola Cec�lia E. Meireles",
@@ -37,7 +38,7 @@ export default class ObrasCidades extends React.Component {
       infoObras: [],
       cidades: [],
       terminou: false,
-
+      size: 0
     }
     this.removeDuplicados = this.removeDuplicados.bind(this);
   }
@@ -92,6 +93,7 @@ export default class ObrasCidades extends React.Component {
       this.setState({cidades: this.removeDuplicados(this.state.cidades).sort()});
     })
     .then(fim => {
+      this.setState({size: Math.floor((this.state.cidades.length)/3)})
       this.setState({terminou: true});
     })
   }
@@ -99,9 +101,22 @@ export default class ObrasCidades extends React.Component {
   render() {
     return (
       <Grid className="tudo">
-          <header>VEJA AS OBRAS DAS CIDADES DA PARAIBA:</header><p/>
-          <div>{this.state.terminou == true ?
-            this.state.cidades.map(x => <ModalCidade infos={this.state.infoObras} cidades={this.state.cidades} cidade={x}/>) : <div className="loader"></div>} </div>
+          <header className="titleObras">VEJA AS OBRAS DAS CIDADES DA PARAIBA:</header><p/>
+          <div>
+            <Col md={4}>
+            {this.state.terminou == true ?
+              this.state.cidades.map((x, index) => {if(index < this.state.size){return(<ModalCidade infos={this.state.infoObras} cidades={this.state.cidades} cidade={x}/>)}}) : <div></div>}
+            </Col>
+            <Col md={4}>
+            {this.state.terminou == true ?
+              this.state.cidades.map((x, index) => {if(index >= this.state.size && index < this.state.size*2){return(<ModalCidade infos={this.state.infoObras} cidades={this.state.cidades} cidade={x}/>)}}) : <div className="loader"></div>}
+            </Col>
+            <Col md={4}>
+            {this.state.terminou == true ?
+              this.state.cidades.map((x, index) => {if(index >= this.state.size*2 && index < this.state.cidades.length){return(<ModalCidade infos={this.state.infoObras} cidades={this.state.cidades} cidade={x}/>)}}) : <div></div>}
+
+            </Col>
+  </div>
       </Grid>
     )
   }
