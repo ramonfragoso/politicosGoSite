@@ -99,10 +99,10 @@ export default class ObrasCidades extends React.Component {
   render() {
     return (
       <Grid className="tudo">
+          <header>VEJA AS OBRAS DAS CIDADES DA PARAIBA:</header><p/>
           <div>{this.state.terminou == true ?
-            this.state.cidades.map(x => <ModalCidade infos={this.state.infoObras} cidades={this.state.cidades} cidade={x}/>) :"loading..."} </div>
+            this.state.cidades.map(x => <ModalCidade infos={this.state.infoObras} cidades={this.state.cidades} cidade={x}/>) : <div className="loader"></div>} </div>
       </Grid>
     )
   }
 }
-// this.state.cidades.map(x => <ModalCidade infos={this.state.infoObras} cidades={this.state.cidades} cidade={x}></ModalCidade>): "loading..."}</div>

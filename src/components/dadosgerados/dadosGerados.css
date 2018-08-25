@@ -50,3 +50,18 @@
 .infoObras {
   margin: 15px;
 }
+
+.loader {
+    margin: 0 auto;
+    border: 16px solid #c67aff; /* Light grey */
+    border-top: 16px solid #fbff21; /* Blue */
+    border-radius: 80%;
+    width: 100px;
+    height: 100px;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
