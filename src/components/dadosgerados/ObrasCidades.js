@@ -73,12 +73,12 @@ export default class ObrasCidades extends React.Component {
                   this.setState(prevState => ({
                     infoObras: [...prevState.infoObras, {
                       municipio: resp.municipio,
-                      nome: resp.name,
+                      nome: resp.name + " - " + resp.tipoProj,
                       valorFNDE: resp.valorFNDE,
                       situacao: resp.situacao,
                       logradouro: resp.logradouro,
                       bairro: resp.bairro,
-                      previsaoConcolusao: resp.previsaoConcolusao,
+                      previsaoConclusao: resp.previsaoConcolusao,
                       empresaContratada: resp.empresaContratada,
                       valorContrato: resp.valorContrato
                     }]
@@ -100,8 +100,9 @@ export default class ObrasCidades extends React.Component {
     return (
       <Grid className="tudo">
           <div>{this.state.terminou == true ?
-            this.state.cidades.map(x => <ModalCidade infos={this.state.infoObras} cidades={this.state.cidades} cidade={x}></ModalCidade>): "loading..."}</div>
+            this.state.cidades.map(x => <ModalCidade infos={this.state.infoObras} cidades={this.state.cidades} cidade={x}/>) :"loading..."} </div>
       </Grid>
     )
   }
 }
+// this.state.cidades.map(x => <ModalCidade infos={this.state.infoObras} cidades={this.state.cidades} cidade={x}></ModalCidade>): "loading..."}</div>
