@@ -79,7 +79,7 @@ class HomePage extends React.Component {
         </Carousel>
         </Row>
         <Row className="downloadRow">
-            <a href={politicosgologo} download>
+            <a href="https://docs.google.com/uc?export=download&id=1hfQXZAwFOwEmNacubUvs6LhY3zgadRzG" download>
               <i className="fas fa-download baixar animated infinite wobble"></i>
               <div className="downloadtext">Download .apk</div>
             </a>

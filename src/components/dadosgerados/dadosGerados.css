@@ -87,8 +87,10 @@
 }
 
 .equipe {
-  text-align: center;
-  color: white;
+  font-family: 'Rubik Mono One', sans-serif;
+  font-size: 1.1em;  text-align: center;
+  color: yellow;
+  margin-bottom: 20px;
 }
 
 .iconeMembro {
@@ -98,3 +100,14 @@
   height: 165px;
 }
 
+.equipeTitle {
+  margin-top: 20%;
+  font-family: 'Rubik Mono One', sans-serif;
+  font-size: 1.1em;  text-align: center;
+  color: yellow;
+}
+
+.imgZinhas {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}

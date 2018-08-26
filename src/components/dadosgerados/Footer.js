@@ -28,13 +28,19 @@ export default class Footer extends React.Component {
 	            </div>
 	            <div className="divImagens">
 		      		<Col md={6}>
-		      			<img src="http://hackfest.com.br/images/logo-02.svg" alt="Smiley face" height="84"/>
+		      			<a href="http://hackfest.com.br/" target="_blank">
+		      				<img className="imgZinhas" src="http://hackfest.com.br/images/logo-02.svg" alt="Hackfest" height="95"/>
+		      			</a>
 		      		</Col>
 		      		<Col md={6}>
-		                <img src={politicosgologo} alt='Politicos' height="84"/>
+		                <img className="imgZinhas" src={politicosgologo} alt='Politicos' height="95"/>
 		      		</Col>
 	      		</div>
+	      		<div className="equipeTitle">
+	      			EQUIPE:
+	      		</div>
 	      		<div className="equipe">
+	      			
 	      			<Row>
 	      				<Col md={3}>
 		      				<a href="https://github.com/ramonfragoso" target="_blank">
