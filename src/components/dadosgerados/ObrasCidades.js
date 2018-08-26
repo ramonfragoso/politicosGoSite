@@ -1,8 +1,6 @@
 import React from 'react';
-import {PanelGroup, Panel, Grid, Col, Footer} from 'react-bootstrap';
+import {Grid, Col} from 'react-bootstrap';
 import './dadosGerados.css';
-import BarChart from "react-svg-bar-chart"
-import LoadingScreen from 'react-loading-screen';
 import ModalCidade from './ModalCidade';
 
 export default class ObrasCidades extends React.Component {
@@ -51,7 +49,7 @@ export default class ObrasCidades extends React.Component {
       for(let i = 0; i < array.length; i++) {
         actual = array[i];
         for(let j = i+1; j < array.length; j++) {
-          if(array[j] == actual) {
+          if(array[j] === actual) {
             duplicate = true
           }
         }
@@ -69,7 +67,6 @@ export default class ObrasCidades extends React.Component {
     fetch('https://politicosgo.herokuapp.com/obras')
     .then(res => res.json())
     .then(r => {
-          let cidadesNome = []
           r.map(resp => {
                   this.setState(prevState => ({
                     infoObras: [...prevState.infoObras, {
@@ -104,15 +101,15 @@ export default class ObrasCidades extends React.Component {
           <header className="titleObras">VEJA AS OBRAS DAS CIDADES DA PARAIBA:</header><p/>
           <div>
             <Col md={4}>
-            {this.state.terminou == true ?
+            {this.state.terminou === true ?
               this.state.cidades.map((x, index) => {if(index < this.state.size){return(<ModalCidade infos={this.state.infoObras} cidades={this.state.cidades} cidade={x}/>)}}) : <div></div>}
             </Col>
             <Col md={4}>
-            {this.state.terminou == true ?
+            {this.state.terminou === true ?
               this.state.cidades.map((x, index) => {if(index >= this.state.size && index < this.state.size*2){return(<ModalCidade infos={this.state.infoObras} cidades={this.state.cidades} cidade={x}/>)}}) : <div className="loader"></div>}
             </Col>
             <Col md={4}>
-            {this.state.terminou == true ?
+            {this.state.terminou === true ?
               this.state.cidades.map((x, index) => {if(index >= this.state.size*2 && index < this.state.cidades.length){return(<ModalCidade infos={this.state.infoObras} cidades={this.state.cidades} cidade={x}/>)}}) : <div></div>}
 
             </Col>

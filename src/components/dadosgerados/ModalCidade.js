@@ -1,5 +1,5 @@
 import React from 'react';
-import {Modal, OverlayTrigger, Button} from 'react-bootstrap';
+import {Modal} from 'react-bootstrap';
 import CardObra from './CardObra';
 import './dadosGerados.css';
 
@@ -46,7 +46,7 @@ export default class ModalCidade extends React.Component {
         <Modal.Body>
           <div>{
             this.props.infos.map(x => {
-              if (x.municipio == this.props.cidade) {
+              if (x.municipio === this.props.cidade) {
                 return(
                   <CardObra
                     municipio={x.municipio}

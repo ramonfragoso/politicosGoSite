@@ -1,18 +1,13 @@
 import React from 'react';
-import {PageHeader, Row, Carousel, Grid, Col} from 'react-bootstrap';
-import ObrasCidades from './dadosgerados/ObrasCidades';
+import {PageHeader, Row, Carousel, Grid} from 'react-bootstrap';
 import DadosGerados from './dadosgerados/DadosGerados';
 import Top10Primeiros from './dadosgerados/Top10Primeiros';
-import Top10Ultimos from './dadosgerados/Top10Ultimos';
 import politicosgologo from '../assets/politicosgologo.png';
 import print1 from '../assets/screenshots/print1.png';
 import print2 from '../assets/screenshots/print2.png';
 import print3 from '../assets/screenshots/print3.png';
-import print4 from '../assets/screenshots/print4.png';
-import print5 from '../assets/screenshots/print5.png';
 import print6 from '../assets/screenshots/print6.png';
 import print7 from '../assets/screenshots/print7.png';
-import print8 from '../assets/screenshots/print8.png';
 import print9 from '../assets/screenshots/print9.png';
 import ultimo from '../assets/screenshots/ultimo.png';
 
@@ -20,10 +15,6 @@ import './HomePage.css';
 import {Link} from 'react-router-dom';
 
 class HomePage extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
 
   setaClick = (e) => {
       this.refs.obras.scrollIntoView({behavior:"smooth"});
@@ -40,11 +31,9 @@ class HomePage extends React.Component {
       <Grid className="grid">
         <Row>
             <PageHeader  className="header">
-              <Row className="hvr-grow">
                 <Link to="/">
-                <img className="logo animated fadeInDown" src={politicosgologo} onClick={this.logoClick} alt='Politicos'/>
+                <div className="hvr-grow"><img className="logo animated fadeInDown " src={politicosgologo} onClick={this.logoClick} alt='Politicos'/></div>
                 </Link>
-              </Row>
               <Row className="subtitle"><small className="subtitleText animated fadeIn">Saiba qual o estado das obras publicas de sua cidade. Conheca os principais responsaveis e avalie-os de forma divertida.</small></Row>
             </PageHeader>
         </Row>
@@ -90,7 +79,7 @@ class HomePage extends React.Component {
         </Row>
         <Row className="downloadRow">
             <a href={politicosgologo} download>
-              <i class="fas fa-download baixar animated infinite wobble"></i>
+              <i className="fas fa-download baixar animated infinite wobble"></i>
               <div className="downloadtext">Download .apk</div>
             </a>
         </Row>
