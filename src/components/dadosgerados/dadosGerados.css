@@ -69,3 +69,32 @@
 .titleObras{
   font-size: 2.3vw;
 }
+
+.footer {
+  text-align: center;
+}
+
+
+.divImagens {
+    margin-top: 35px;
+}
+
+.texto {
+  margin-top: 25px;
+  font-family: 'Rubik Mono One', sans-serif;
+  font-size: 1.1em;
+  color: yellow;
+}
+
+.equipe {
+  text-align: center;
+  color: white;
+}
+
+.iconeMembro {
+  border-radius: 50%;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  height: 165px;
+}
+

@@ -3,6 +3,7 @@ import {PageHeader, Row, Carousel, Grid} from 'react-bootstrap';
 import DadosGerados from './dadosgerados/DadosGerados';
 import Top10Primeiros from './dadosgerados/Top10Primeiros';
 import politicosgologo from '../assets/politicosgologo.png';
+import Footer from './dadosgerados/Footer';
 import print1 from '../assets/screenshots/print1.png';
 import print2 from '../assets/screenshots/print2.png';
 import print3 from '../assets/screenshots/print3.png';
@@ -97,6 +98,9 @@ class HomePage extends React.Component {
           </div>
           <div className="viewPrimeiros">
             <Top10Primeiros/>
+          </div>
+          <div className="footerView">
+            <Footer/>
           </div>
       </div>
 

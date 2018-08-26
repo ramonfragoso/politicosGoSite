@@ -111,7 +111,6 @@ export default class ObrasCidades extends React.Component {
             <Col md={4}>
             {this.state.terminou === true ?
               this.state.cidades.map((x, index) => {if(index >= this.state.size*2 && index < this.state.cidades.length){return(<ModalCidade infos={this.state.infoObras} cidades={this.state.cidades} cidade={x}/>)}}) : <div></div>}
-
             </Col>
   </div>
       </Grid>
