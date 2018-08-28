@@ -1,7 +1,9 @@
 import React from 'react';
 import {Grid, Row, Col} from 'react-bootstrap'
 import politicosgologo from '../../assets/politicosgologo.png';
-import fernando from '../../assets/fernando.png';
+import fernando from '../../assets/fernando.jpeg';
+import fred from '../../assets/fred.jpeg';
+
 import './dadosGerados.css';
 
 
@@ -42,7 +44,7 @@ export default class Footer extends React.Component {
 	      		<div className="equipe">
 	      			
 	      			<Row>
-	      				<Col md={3}>
+	      				<Col md={2}>
 		      				<a href="https://github.com/ramonfragoso" target="_blank">
 		      					<img className="iconeMembro" src="https://avatars3.githubusercontent.com/u/25274323?s=400&v=4" alt="ramon" height="84"/>
 		      				</a>
@@ -53,7 +55,7 @@ export default class Footer extends React.Component {
 		      				</a>
 		      			</Col>
 		      			
-		      			<Col md={3}>
+		      			<Col md={2}>
 		      				<a href="https://github.com/Icaro-Lima" target="_blank">
 		      					<img className="iconeMembro" src="https://avatars1.githubusercontent.com/u/27537731?s=400&v=4" alt="icaro" height="84"/>						
 		      				</a>
@@ -61,7 +63,13 @@ export default class Footer extends React.Component {
 		      			
 		      			<Col md={3}>
 		      				<a href="https://github.com/javanlacerda" target="_blank">
-		      					<img className="iconeMembro" src="https://avatars0.githubusercontent.com/u/23180089?s=400&v=4" alt="fmota0" height="84"/>						
+		      					<img className="iconeMembro" src="https://avatars0.githubusercontent.com/u/23180089?s=400&v=4" alt="javan" height="84"/>						
+		      				</a>
+		      			</Col>
+
+		      			<Col md={2}>
+		      				<a href="" target="_blank">
+		      					<img className="iconeMembro" src={fred} alt="fred" height="84"/>						
 		      				</a>
 		      			</Col>
 
