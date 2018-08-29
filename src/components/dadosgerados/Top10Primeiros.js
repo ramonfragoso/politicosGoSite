@@ -75,11 +75,11 @@ export default class Top10Primeiros extends React.Component {
       <Grid className="tudo">
         <Row>
           <PageHeader className="header">
-
-                <header className="titleObras">VEJA AS OBRAS DAS CIDADES DA PARAIBA:</header><p/>
+          
+                <header className="titleObras">10 CIDADES COM MAIS OBRAS NA PARAIBA:</header><p/>
                 <div className="">
                   {this.state.loading === true ?
-                    this.state.ranking.map((curr, index) => {if(index < 10) return(<CardRanking cidade={curr[0]} qtd={curr[1]}/>)})
+                    this.state.ranking.map((curr, index) => {if(index < 10) return(<CardRanking posicao={index} cidade={curr[0]} qtd={curr[1]}/>)})
                      : <div>carregando...</div>
                   }
                 </div>

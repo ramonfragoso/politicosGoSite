@@ -99,7 +99,7 @@ export default class ObrasCidades extends React.Component {
     return (
       <Grid className="tudo">
           <header className="titleObras">VEJA AS OBRAS DAS CIDADES DA PARAIBA:</header><p/>
-          <div>
+          <div className="municipioListar">
             <Col md={4}>
             {this.state.terminou === true ?
               this.state.cidades.map((x, index) => {if(index < this.state.size){return(<ModalCidade infos={this.state.infoObras} cidades={this.state.cidades} cidade={x}/>)}}) : <div></div>}

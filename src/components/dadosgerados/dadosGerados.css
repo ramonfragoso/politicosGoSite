@@ -1,5 +1,16 @@
+@font-face {
+  font-family: 'VCR';
+  src: local("VCR"),
+      url(../../assets/VCR_OSD_MONO_1.001.ttf) format('truetype');
+}
+
 @import url('https://fonts.googleapis.com/css?family=Rubik+Mono+One');
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+
+a {
+  color: #0062cc;
+  text-shadow: 0px 0px 1px #00aacc;
+}
 
 .logo {
   width: 100%;
@@ -14,13 +25,9 @@
 }
 
 .municipioListar {
-  font-family: 'Rubik Mono One', sans-serif;
+  font-family: 'VCR';
   font-size: 2.5vw;
-}
-
-.cidadeRanking {
-  font-family: 'Rubik Mono One', sans-serif;
-  font-size: 2.5vw;
+  color: white;
 }
 
 .opcao {
@@ -113,9 +120,22 @@
 }
 
 .rankingBox {
-  font-size: 2vw;  
-  width: 300px;
-  border: 25px solid green;
-  padding: 25px;
-  margin: 25px;
+  font-family: "VCR";
+  font-size: 4vw;
+  color: #3d3af2;
+  text-shadow: 0px 0px 6px black;
+  margin-top: 20px;
+}
+
+.primeiro {
+  font-size: 5vw;
+  color: #ffe105;
+}
+.segundo {
+  font-size: 4.8vw;
+  color: #7c7a77;
+}
+.terceiro {
+  font-size: 4.5vw;
+  color: #7a4103  ;
 }

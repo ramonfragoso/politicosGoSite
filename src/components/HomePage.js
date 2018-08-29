@@ -35,7 +35,7 @@ class HomePage extends React.Component {
                 <Link to="/">
                 <div className="hvr-grow"><img className="logo animated fadeInDown " src={politicosgologo} onClick={this.logoClick} alt='Politicos'/></div>
                 </Link>
-              <Row className="subtitle"><small className="subtitleText animated fadeIn">Saiba qual o estado das obras publicas de sua cidade. Conheca os principais responsaveis e avalie-os de forma divertida.</small></Row>
+              <Row className="subtitle"><small className="subtitleText animated fadeIn">SAIBA QUAL O ESTADO DAS OBRAS PÚBLICAS DE SUA CIDADE. CONHEÇA OS PRINCIPAIS RESPONSÁVEIS E AVALIE-OS DE FORMA DIVERTIDA.</small></Row>
             </PageHeader>
         </Row>
         <Row>
@@ -49,7 +49,7 @@ class HomePage extends React.Component {
             <Carousel.Item>
                 <img width={300} height={300} alt="900x500" src={print2} />
                 <div className="printDescription">
-                VÁ À LOCAIS DE OBRAS DO GOVERNO E DESBRAVE SUA CIDADE.
+                VÁ ATÉ LOCAIS DE OBRAS DO GOVERNO E DESBRAVE SUA CIDADE.
                 </div>
             </Carousel.Item>
             <Carousel.Item>
