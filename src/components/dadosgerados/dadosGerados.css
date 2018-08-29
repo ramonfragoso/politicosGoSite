@@ -111,3 +111,11 @@
   margin-top: 30px;
   margin-bottom: 20px;
 }
+
+.rankingBox {
+  font-size: 2vw;  
+  width: 300px;
+  border: 25px solid green;
+  padding: 25px;
+  margin: 25px;
+}

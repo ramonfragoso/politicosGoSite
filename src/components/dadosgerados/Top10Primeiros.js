@@ -1,67 +1,90 @@
 import React from 'react';
-import {Grid, PageHeader, Row} from 'react-bootstrap';
+import {Grid, Col, Row, PageHeader} from 'react-bootstrap';
 import './dadosGerados.css';
+import CardRanking from "./CardRanking";
 
 export default class Top10Primeiros extends React.Component {
-
-    // "name": "Quadra da Escola Cec�lia E. Meireles",
-    // "situacao": "Conclu�da",
-    // "municipio": "Cajazeiras",
-    // "uf": "PB",
-    // "cep": "58900000",
-    // "logradouro": "Rua Raimundo Leite Rolim",
-    // "bairro": "Casas Populares",
-    // "situacaoConvenio": "Vencido",
-    // "percentualExecucao": 100,
-    // "previsaoConcolusao": "31/12/2014",
-    // "tipoEnsino": "Educa��o B�sica",
-    // "tipoProj": "QUADRA ESCOLAR COBERTA COM VESTI�RIO- PROJETO FNDE",
-    // "valorFNDE": 506388.37"
-    // "nomeEntidade": "PREF MUN DE CAJAZEIRAS",
-    // "razaoSocial": "CAJAZEIRAS PREFEITURA                                                                                                                                                                                   ",
-    // "email": "gabinete@cajazeiras.pb.gov.br",
 
   constructor(props) {
     super(props);
     this.state = {
-      show: false,
-      nomeObra: '',
-      situacao: '',
-      uf: '',
-      logradouro: '',
-      bairro: '',
-      nomeEntidade: ''
+      cidades: {},
+      ranking: [],
+      loading: false
     }
+    this.removeDuplicados = this.removeDuplicados.bind(this);
   }
 
-  handleClick = (e) => {
-    this.setState({show:true})
+  removeDuplicados = (array) => {
+      let actual = 0;
+      let retorno = [];
+      let duplicate = false;
+
+      for(let i = 0; i < array.length; i++) {
+        actual = array[i];
+        for(let j = i+1; j < array.length; j++) {
+          if(array[j] === actual) {
+            duplicate = true
+          }
+        }
+        if(duplicate) {
+          duplicate = false;
+        } else {
+          retorno.push(array[i])
+        }
+      }
+      return retorno;
+  }
+
+  componentDidMount = () => {
 
     fetch('https://politicosgo.herokuapp.com/obras')
-    .then(r => r.json())
-    .then(res => {
-        for(var i in res) {
-          console.log(i)
+    .then(res => res.json())
+    .then(r => {
+      r.map(x => {
+        if(this.state.cidades[x.municipio] === undefined) {
+          this.state.cidades[x.municipio] = 1;
+        } else {
+          this.state.cidades[x.municipio] += 1;
         }
-    });
+      })
+    })
+    .then(res => {
+      let rankingAux = []
+      for(var obra in this.state.cidades) {
+        rankingAux.push([obra, this.state.cidades[obra]])
+      }
 
+      function Comparator(a, b) {
+         if (a[1] < b[1]) return 1;
+         if (a[1] > b[1]) return -1;
+         return 0;
+      }
 
+      rankingAux.sort(Comparator)
+      this.setState({ranking: rankingAux})
+    })
+    .then(response => {
+      this.setState({loading: true})
+    })
 
-  }
-
-  handleClose = (e) => {
-    this.setState({show:false})
   }
 
   render() {
-    return(
-      <Grid className="obrasCidades">
+    return (
+      <Grid className="tudo">
         <Row>
-            <PageHeader className="header">
-              <div ref="dados">
-                TOP 10 CIDADES COM MAIS OBRAS NA PARAIBA
-              </div>
-            </PageHeader>
+          <PageHeader className="header">
+
+                <header className="titleObras">VEJA AS OBRAS DAS CIDADES DA PARAIBA:</header><p/>
+                <div className="">
+                  {this.state.loading === true ?
+                    this.state.ranking.map((curr, index) => {if(index < 10) return(<CardRanking cidade={curr[0]} qtd={curr[1]}/>)})
+                     : <div>carregando...</div>
+                  }
+                </div>
+
+          </PageHeader>
         </Row>
       </Grid>
     )
